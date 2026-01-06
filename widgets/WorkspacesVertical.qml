@@ -20,15 +20,19 @@ ClippingRectangle {
     implicitWidth: list.width + padding
     implicitHeight: list.height + padding
     
-    color: Qt.darker(Theme.foreground, 4)
+    color: Theme.surface_container_highest
     radius: Theme.smallradius
+    border.color: Theme.outline_variant
+    border.width: Theme.borderwidth
     
     // --- THE HIGHLIGHT (The moving box) ---
     Component {
         id: highlightComp
         Rectangle {
             z: 0
-            color: Theme.accent
+            color: Theme.primary
+            border.color: Theme.outline
+            border.width: Theme.borderwidth
             radius: Theme.smallradius
             
             // This makes it slide smoothly
@@ -46,7 +50,7 @@ ClippingRectangle {
         height: Math.min((6 * root.itemSize) + (4 * root.spacing),contentHeight)
 
         clip: true 
-        spacing: 5
+        spacing: 3
         boundsBehavior: Flickable.StopAtBounds 
 
         model: Hyprland.workspaces
@@ -82,10 +86,11 @@ ClippingRectangle {
             readonly property bool isActive: modelData.id === Hyprland.focusedWorkspace.id
             
             color: {
-                if (mouse.hovered && !isSpecial && !isActive) return Qt.darker(Theme.accent, 2)
-                if (isSpecial) return Theme.foreground
+                if (mouse.hovered && !isSpecial && !isActive) return Theme.tertiary
+                if (isSpecial) return Theme.primary
                 return "transparent"
             }
+
             radius: Theme.smallradius
 
             Column {
@@ -97,9 +102,9 @@ ClippingRectangle {
                     font.pixelSize: Theme.fontsize1
                     text: modelData.id < 0 ? "" : modelData.id
                     color: {
-                        if (mouse.hovered && !isSpecial && !isActive) return Qt.lighter(Theme.background, 2)
-                        if (isSpecial || isActive) return Theme.background
-                        return Theme.foreground
+                        if (mouse.hovered && !isSpecial && !isActive) return Theme.on_tertiary
+                        if (isSpecial || isActive) return Theme.on_primary
+                        return Theme.secondary
                     }
                     font.bold: Theme.bold
                 }
@@ -114,9 +119,9 @@ ClippingRectangle {
                             font.pixelSize: Theme.fontsize2
                             text: matchIcon(modelData.wayland?.appId)
                             color: {
-                                if (mouse.hovered && !isSpecial && !isActive) return Qt.lighter(Theme.background, 2)
-                                if (isSpecial || isActive) return Theme.background
-                                return Theme.foreground
+                                if (mouse.hovered && !isSpecial && !isActive) return Theme.on_tertiary
+                                if (isSpecial || isActive) return Theme.on_primary
+                                return Theme.secondary
                             }
                             font.bold: Theme.bold
                         }   

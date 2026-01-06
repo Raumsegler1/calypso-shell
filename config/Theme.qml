@@ -9,16 +9,49 @@ import "./layouts"
 QtObject {
     id: root
 
-    property color background   :   currentColTheme.background
-    property color on_background:   currentColTheme.on_background
-    property color foreground   :   currentColTheme.foreground
-    property color hover        :   currentColTheme.hover
-    property color accent       :   currentColTheme.accent
-    property color accent2      :   currentColTheme.accent2
-    property color accent3      :   currentColTheme.accent3
-    property color accent4      :   currentColTheme.accent4
-    property color bordercol    :   currentColTheme.bordercol
-    property color error        :   currentColTheme.error
+    // --- Surface ---
+    property color surface                 :   currentColTheme.surface
+    property color surface_bright          :   currentColTheme.surface_bright
+    property color on_surface              :   currentColTheme.on_surface
+    property color outline                 :   currentColTheme.outline
+    property color outline_variant         :   currentColTheme.outline_variant
+
+    // --- Surface Container ---
+    property color surface_container_lowest:   currentColTheme.surface_container_lowest
+    property color surface_container_low   :   currentColTheme.surface_container_low
+    property color surface_container       :   currentColTheme.surface_container
+    property color surface_container_high  :   currentColTheme.surface_container_high
+    property color surface_container_highest:  currentColTheme.surface_container_highest
+
+    // --- Primary (Fixed) ---
+    property color primary                 :   currentColTheme.primary
+    property color on_primary              :   currentColTheme.on_primary
+    property color primary_fixed           :   currentColTheme.primary_fixed
+    property color on_primary_fixed        :   currentColTheme.on_primary_fixed
+
+    // --- Secondary (Fixed) ---
+    property color secondary               :   currentColTheme.secondary
+    property color on_secondary            :   currentColTheme.on_secondary
+    property color secondary_fixed         :   currentColTheme.secondary_fixed
+    property color on_secondary_fixed      :   currentColTheme.on_secondary_fixed
+
+    // --- Tertiary (Fixed) ---
+    property color tertiary                :   currentColTheme.tertiary
+    property color on_tertiary             :   currentColTheme.on_tertiary
+    property color tertiary_fixed          :   currentColTheme.tertiary_fixed
+    property color on_tertiary_fixed       :   currentColTheme.on_tertiary_fixed
+
+    // --- Error (Container) ---
+    property color error                   :   currentColTheme.error
+    property color on_error                :   currentColTheme.on_error
+    property color error_container         :   currentColTheme.error_container
+    property color on_error_container      :   currentColTheme.on_error_container
+
+    // --- Inverse ---
+    property color inverse_surface         :   currentColTheme.inverse_surface
+    property color inverse_on_surface      :   currentColTheme.inverse_on_surface
+    property color inverse_primary         :   currentColTheme.inverse_primary
+
 
     property int   borderwidth  :   currentTheme.borderwidth
     property int   smallradius  :   currentTheme.smallradius

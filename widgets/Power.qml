@@ -16,8 +16,8 @@ Rectangle {
     radius: Theme.smallradius
     
     color: {
-        if (popup.pinned) return Theme.accent // Highlight when pinned
-        return Theme.accent4
+        if (popup.pinned) return Theme.tertiary // Highlight when pinned
+        return Theme.primary
     }
 
     property real _currentRadius: ((popup._popupWindow && popup._popupWindow.visible)) ? 0 : Theme.barradius
@@ -50,7 +50,7 @@ Rectangle {
         anchors.centerIn: parent
         font.pixelSize: Theme.fontsize1
         font.bold: Theme.bold
-        color: Theme.background
+        color: Theme.on_primary
         text: ""
     }
 
@@ -65,7 +65,7 @@ Rectangle {
 
     TapHandler {
         onTapped: {
-            statusProc.running = true
+            statusProc.running = truebackground
         }
     }
 

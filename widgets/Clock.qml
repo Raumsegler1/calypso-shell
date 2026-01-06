@@ -12,14 +12,14 @@ Rectangle {
     implicitHeight: Theme.isVertical ? Theme.widgetwidth * 2 : Theme.widgetwidth
     implicitWidth: Theme.isVertical ? Theme.widgetwidth : Theme.widgetwidth * 2
 
-    color: Theme.foreground
+    color: Theme.primary
     radius: Theme.smallradius
     Text {
         id: timeDisplay
         anchors.centerIn: parent
         wrapMode: Text.WrapAnywhere
         text: Theme.isVertical ? Qt.formatTime(new Date(), "hh\nmm") : Qt.formatTime(new Date(), "hh:mm")
-        color: Theme.background
+        color: Theme.on_primary
         font.pixelSize: Theme.fontsize1
         font.bold: Theme.bold
 

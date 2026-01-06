@@ -14,7 +14,11 @@ Rectangle {
     // --- STYLE ---
     implicitWidth: Theme.widgetwidth 
     implicitHeight: Theme.widgetwidth
-    color: Qt.darker(Theme.foreground, 4)
+
+    // --- COLOR ---
+    color: Theme.surface_container
+    border.color: Theme.outline_variant
+    border.width: Theme.borderwidth
 
     visible: Media.isConnected ? true : false
     clip: true
@@ -26,9 +30,9 @@ Rectangle {
         radius: 32
         border.width: 1
         border.color: {
-            if (popup.pinned) return Theme.accent // Highlight when pinned
+            if (popup.pinned) return Theme.tertiary
             if (!Media.isConnected) return Theme.error
-            return Theme.foreground
+            return Media.isPlaying ? Theme.primary : Theme.outline
         }
         Image {
             id: sourceImage
@@ -40,8 +44,8 @@ Rectangle {
             visible: true
             layer.enabled: true
             layer.effect: MultiEffect {
-                colorization: Media.isPlaying ? 0 : 1.0 // 1.0
-                colorizationColor: Theme.foreground
+                colorization: Media.isPlaying ? 0 : 0.6
+                colorizationColor: Theme.surface
             }
             transform: Rotation { 
                 origin.x: sourceImage.width/2; 
@@ -56,8 +60,11 @@ Rectangle {
             implicitWidth: parent.width
             implicitHeight: parent.height
             radius: 32
-            color: popup.hovered ? Qt.darker(Theme.foreground, 5) : "transparent"
-            opacity: 0.8
+            color: Theme.on_surface
+            opacity: popup.hovered ? 0.12 : 0
+
+            // Interaction: Fade in/out smoothly
+            Behavior on opacity { NumberAnimation { duration: 150 } }
         }
 
         Text {
@@ -65,9 +72,12 @@ Rectangle {
             anchors.centerIn: parent
             font.pixelSize: Theme.fontsize1
             font.bold: true
-            color: popup.hovered ? Qt.lighter(Theme.foreground, 2) : "transparent"
-            opacity: 0.8
-            text: Media.isPlaying ? "" : " "  
+            color: Theme.on_surface
+            opacity: popup.hovered ? 1.0 : 0.0
+            text: Media.isPlaying ? "" : " "
+
+            // Interaction: Fade in/out smoothly
+            Behavior on opacity { NumberAnimation { duration: 150 } }  
         }
     }
 

@@ -14,8 +14,8 @@ Rectangle {
     radius: Theme.smallradius
     
     color: {
-        if (Cpu.cpuPercentage > 90) return Theme.accent // Highlight when pinned
-        if (Cpu.cpuPercentage) return Theme.foreground
+        if (Cpu.cpuPercentage > 90) return Theme.tertiary // Highlight when pinned
+        if (Cpu.cpuPercentage) return Theme.primary
         return Theme.error
     }
 
@@ -23,7 +23,11 @@ Rectangle {
         anchors.centerIn: parent
         font.pixelSize: Theme.fontsize2
         font.bold: Theme.bold
-        color: Theme.background
+        color: {
+            if (Cpu.cpuPercentage > 90) return Theme.on_tertiary // Highlight when pinned
+            if (Cpu.cpuPercentage) return Theme.on_primary
+            return Theme.on_error
+        }
         text: {
             var s = Cpu.cpuPercentage
             if (s) return s + " "

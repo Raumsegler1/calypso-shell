@@ -9,8 +9,8 @@ import qs.services
 SidebarPopup {
     id: popup
     property real padding: 20
-    baseWidth: 225 + padding
-    baseHeight: grid.height + padding
+    baseWidth: background.width + padding/2
+    baseHeight: background.height + padding/2
     
     inverseCornerBottom: 0
     
@@ -26,7 +26,13 @@ SidebarPopup {
         cmd.running = true
         popup.closeAnimated()
     }
-
+    Rectangle {
+        id: background
+        anchors.centerIn: parent
+        width: grid.width + padding
+        height: grid.height + padding
+        color: Theme.surface_container
+        radius: Theme.bigradius
     GridLayout {
         id: grid
         anchors.centerIn: parent
@@ -41,7 +47,8 @@ SidebarPopup {
             id: btns
             property alias icon: iconText.text
             property alias label: labelText.text
-            property color hoverColor: Theme.background
+            property color hoverColor: Theme.on_tertiary
+            property color normalColor: Theme.on_primary
             
             // Allow clicking
             Rectangle {
@@ -49,8 +56,8 @@ SidebarPopup {
                 Layout.fillHeight: true
                 Layout.minimumHeight: 70
                 Layout.minimumWidth: 70
-                radius: Theme.smallradius
-                color: mouse.hovered ? Theme.accent4: "transparent"
+                radius: Theme.bigradius
+                color: mouse.hovered ? Theme.tertiary : Theme.primary
                 
                 // Put the column inside the rectangle background
                 Column {
@@ -61,7 +68,7 @@ SidebarPopup {
                         id: iconText
                         text: ""
                         font.pixelSize: Theme.fontsize1 * 2
-                        color: mouse.hovered ? btns.hoverColor : Theme.foreground
+                        color: mouse.hovered ? btns.hoverColor : btns.normalColor
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                     Text {
@@ -69,7 +76,7 @@ SidebarPopup {
                         text: ""
                         font.pixelSize: Theme.fontsize2
                         font.bold: true
-                        color: mouse.hovered ? btns.hoverColor : Theme.foreground
+                        color: mouse.hovered ? btns.hoverColor : btns.normalColor
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
@@ -98,6 +105,7 @@ SidebarPopup {
         PowerBtn { icon: "⏻"; label: "Shutdown" }
         PowerBtn { icon: ""; label: "Restart" }
         PowerBtn { icon: "󰤁"; label: "Hibernate" }
+    }
     }
 
     Item {

@@ -24,12 +24,12 @@ Rectangle {
         sliderDirectionRight: false
         Behavior on fillPercent { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
         sliderfgval: {
-            if (Pipewire.defaultAudioSink?.audio.muted) return Theme.accent
-            return Theme.foreground
+            if (Pipewire.defaultAudioSink?.audio.muted) return Theme.tertiary
+            return Theme.primary
         }
         sliderbgval: {
-            if (Pipewire.defaultAudioSink?.audio.muted) return Theme.accent
-            return Theme.foreground
+            if (Pipewire.defaultAudioSink?.audio.muted) return Theme.tertiary
+            return Theme.primary
         }
         value: Pipewire.defaultAudioSink?.audio.volume ?? 0
         onMoved: (newValue) => {
@@ -44,7 +44,10 @@ Rectangle {
         anchors.margins: parent.width/4
         font.pixelSize: Theme.fontsize2
         font.bold: Theme.bold
-        color: Theme.background
+        color: {
+            if (Pipewire.defaultAudioSink?.audio.muted) return Theme.on_tertiary
+            return Theme.on_primary
+        }
         text: {
             var vol = (Pipewire.defaultAudioSink && Pipewire.defaultAudioSink?.audio.volume) || 0
             var volpercent = Math.round(Pipewire.defaultAudioSink?.audio.volume*100)

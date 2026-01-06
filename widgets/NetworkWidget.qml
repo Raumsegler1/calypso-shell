@@ -14,9 +14,9 @@ Rectangle {
     radius: Theme.smallradius
     
     color: {
-        if (popup.pinned) return Theme.accent // Highlight when pinned
+        if (popup.pinned) return Theme.tertiary // Highlight when pinned
         if (!Network.isConnected) return Theme.error
-        if (Network.isWifi) return Theme.foreground
+        if (Network.isWifi) return Theme.primary
         return Theme.error
     }
 
@@ -24,7 +24,12 @@ Rectangle {
         anchors.centerIn: parent
         font.pixelSize: Theme.fontsize2
         font.bold: Theme.bold
-        color: Theme.background
+        color: {
+            if (popup.pinned) return Theme.on_tertiary // Highlight when pinned
+            if (!Network.isConnected) return Theme.on_error
+            if (Network.isWifi) return Theme.on_primary
+            return Theme.on_error
+        }
         text: {
             if (!Network.isConnected) return "󰤮"
             if (Network.isEthernet) return "󰈀"

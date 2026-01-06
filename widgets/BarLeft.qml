@@ -56,7 +56,7 @@ Scope {
                     bottom: parent.bottom
                 }
                 implicitWidth: Theme.widgetwidth + Theme.widgetmargin*2
-                color: Theme.background
+                color: Theme.surface
                 radius: Theme.barradius
                 visible: true
 

@@ -10,7 +10,7 @@ PopupWindow {
     // --- CONFIGURATION ---
     property bool isHovered: mouseHandler.hovered
     property real cornerRadius: Theme.bigradius
-    property color backgroundCol: Theme.background
+    property color backgroundCol: Theme.surface
     property real heightPadding: 10
     property bool pinned: false
     

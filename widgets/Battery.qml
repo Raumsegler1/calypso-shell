@@ -8,10 +8,10 @@ Rectangle {
     implicitWidth: Theme.widgetwidth
     implicitHeight: Theme.widgetwidth
     color: {
-            if (root.percent <= 20) return Theme.error
-            if (root.isCharging) return Theme.accent
-            return Theme.accent3
-        }
+        if (root.percent <= 20) return Theme.error
+        if (root.isCharging) return Theme.tertiary
+        return Theme.primary
+    }
     radius: Theme.smallradius
 
     // Access the main "Display Device" (the aggregate of all batteries)
@@ -65,7 +65,11 @@ Rectangle {
                 return "󱐋"
             }
         }
-        color: Theme.background
+        color: {
+            if (root.percent <= 20) return Theme.on_error
+            if (root.isCharging) return Theme.on_tertiary
+            return Theme.on_primary
+        }
         
         font.pixelSize: {
             if (root.percent >= 99) return Theme.fontsize1
