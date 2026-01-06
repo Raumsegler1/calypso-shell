@@ -42,16 +42,16 @@ QtObject {
     // ---------------------------------------------------------------------------
 
     // The main color of your app. Used for key components like the FAB or active states.
-    property color primary                 :   "#c3ce5e"
+    property color primary                 :   "#cbbeff"
     
     // Color for text and icons sitting on top of 'primary' components.
-    property color on_primary              :   "#2d3200"
+    property color on_primary              :   "#321e73"
     
     // A color variant that stays similar in both Light and Dark themes. Stronger than container.
-    property color primary_fixed           :   "#dfeb76"
+    property color primary_fixed           :   "#e7deff"
     
     // Text/Icon color for content on top of 'primary_fixed'.
-    property color on_primary_fixed        :   "#1a1e00"
+    property color on_primary_fixed        :   "#1e0160"
 
     // ---------------------------------------------------------------------------
     // SECONDARY PALETTE
@@ -59,16 +59,16 @@ QtObject {
     // ---------------------------------------------------------------------------
 
     // Used for less prominent components, like filter chips or non-active states.
-    property color secondary               :   "#c7c9a6"
+    property color secondary               :   "#cac3dc"
     
     // Color for text and icons sitting on top of 'secondary' components.
-    property color on_secondary            :   "#2e3118"
+    property color on_secondary            :   "#302c3f"
     
     // Secondary variant that stays similar in both Light and Dark themes.
-    property color secondary_fixed         :   "#e3e5c1"
+    property color secondary_fixed         :   "#e6dff9"
     
     // Text/Icon color for content on top of 'secondary_fixed'.
-    property color on_secondary_fixed      :   "#1b1d07"
+    property color on_secondary_fixed      :   "#1d192b"
 
     // ---------------------------------------------------------------------------
     // TERTIARY PALETTE
@@ -76,16 +76,16 @@ QtObject {
     // ---------------------------------------------------------------------------
 
     // Accent color used to break up the monotony of primary/secondary colors.
-    property color tertiary                :   "#a2d0c1"
+    property color tertiary                :   "#eeb8cb"
     
     // Color for text and icons sitting on top of 'tertiary' components.
-    property color on_tertiary             :   "#05362b"
+    property color on_tertiary             :   "#472433"
     
     // Tertiary variant that stays similar in both Light and Dark themes.
-    property color tertiary_fixed          :   "#beecdc"
+    property color tertiary_fixed          :   "#ffd9e5"
     
     // Text/Icon color for content on top of 'tertiary_fixed'.
-    property color on_tertiary_fixed       :   "#002019"
+    property color on_tertiary_fixed       :   "#30111f"
 
     // ---------------------------------------------------------------------------
     // ERROR PALETTE
@@ -116,5 +116,21 @@ QtObject {
     property color inverse_on_surface      :   "#303030"
     
     // Action color on top of 'inverse_surface' (e.g. "Undo" button on a snackbar).
-    property color inverse_primary         :   "#5b6400"
+    property color inverse_primary         :   "#6251a6"
+
+
+    // Other 
+
+    property color background   :   "#131313"
+    property color on_background:   "#e2e2e2"
+
+    property color foreground   :   "#cbbeff"
+
+    property color hover        :   "#cac3dc"
+    property color accent       :   "#eeb8cb"
+    property color accent2      :   "#cbbeff"
+    property color accent3      :   "#cbbeff"
+    property color accent4      :   "#cbbeff"
+
+    property color bordercol    :   "#6251a6"
 }

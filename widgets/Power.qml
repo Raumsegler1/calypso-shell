@@ -50,7 +50,10 @@ Rectangle {
         anchors.centerIn: parent
         font.pixelSize: Theme.fontsize1
         font.bold: Theme.bold
-        color: Theme.on_primary
+        color: {
+            if (popup.pinned) return Theme.on_tertiary // Highlight when pinned
+            return Theme.on_primary
+        }
         text: ""
     }
 
