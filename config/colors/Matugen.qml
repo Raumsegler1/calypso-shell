@@ -42,16 +42,16 @@ QtObject {
     // ---------------------------------------------------------------------------
 
     // The main color of your app. Used for key components like the FAB or active states.
-    property color primary                 :   "#cbbeff"
+    property color primary                 :   "#d4bbff"
     
     // Color for text and icons sitting on top of 'primary' components.
-    property color on_primary              :   "#321e73"
+    property color on_primary              :   "#3b1a6e"
     
     // A color variant that stays similar in both Light and Dark themes. Stronger than container.
-    property color primary_fixed           :   "#e7deff"
+    property color primary_fixed           :   "#ebdcff"
     
     // Text/Icon color for content on top of 'primary_fixed'.
-    property color on_primary_fixed        :   "#1e0160"
+    property color on_primary_fixed        :   "#270058"
 
     // ---------------------------------------------------------------------------
     // SECONDARY PALETTE
@@ -59,16 +59,16 @@ QtObject {
     // ---------------------------------------------------------------------------
 
     // Used for less prominent components, like filter chips or non-active states.
-    property color secondary               :   "#cac3dc"
+    property color secondary               :   "#cdc2db"
     
     // Color for text and icons sitting on top of 'secondary' components.
-    property color on_secondary            :   "#302c3f"
+    property color on_secondary            :   "#332b3f"
     
     // Secondary variant that stays similar in both Light and Dark themes.
-    property color secondary_fixed         :   "#e6dff9"
+    property color secondary_fixed         :   "#eadef7"
     
     // Text/Icon color for content on top of 'secondary_fixed'.
-    property color on_secondary_fixed      :   "#1d192b"
+    property color on_secondary_fixed      :   "#1f182a"
 
     // ---------------------------------------------------------------------------
     // TERTIARY PALETTE
@@ -76,16 +76,16 @@ QtObject {
     // ---------------------------------------------------------------------------
 
     // Accent color used to break up the monotony of primary/secondary colors.
-    property color tertiary                :   "#eeb8cb"
+    property color tertiary                :   "#f1b7c4"
     
     // Color for text and icons sitting on top of 'tertiary' components.
-    property color on_tertiary             :   "#472433"
+    property color on_tertiary             :   "#49232d"
     
     // Tertiary variant that stays similar in both Light and Dark themes.
-    property color tertiary_fixed          :   "#ffd9e5"
+    property color tertiary_fixed          :   "#ffd9e0"
     
     // Text/Icon color for content on top of 'tertiary_fixed'.
-    property color on_tertiary_fixed       :   "#30111f"
+    property color on_tertiary_fixed       :   "#32101a"
 
     // ---------------------------------------------------------------------------
     // ERROR PALETTE
@@ -116,7 +116,7 @@ QtObject {
     property color inverse_on_surface      :   "#303030"
     
     // Action color on top of 'inverse_surface' (e.g. "Undo" button on a snackbar).
-    property color inverse_primary         :   "#6251a6"
+    property color inverse_primary         :   "#6d4ea1"
 
 
     // Other 
@@ -124,13 +124,13 @@ QtObject {
     property color background   :   "#131313"
     property color on_background:   "#e2e2e2"
 
-    property color foreground   :   "#cbbeff"
+    property color foreground   :   "#d4bbff"
 
-    property color hover        :   "#cac3dc"
-    property color accent       :   "#eeb8cb"
-    property color accent2      :   "#cbbeff"
-    property color accent3      :   "#cbbeff"
-    property color accent4      :   "#cbbeff"
+    property color hover        :   "#cdc2db"
+    property color accent       :   "#f1b7c4"
+    property color accent2      :   "#d4bbff"
+    property color accent3      :   "#d4bbff"
+    property color accent4      :   "#d4bbff"
 
-    property color bordercol    :   "#6251a6"
+    property color bordercol    :   "#6d4ea1"
 }

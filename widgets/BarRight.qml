@@ -37,7 +37,7 @@ Scope {
                 anchors.left: parent.left
                 corner: RoundCorner.CornerEnum.TopRight
                 implicitSize: extraSpace
-                color: Theme.background
+                color: Theme.surface
             }
 
             RoundCorner {
@@ -45,7 +45,7 @@ Scope {
                 anchors.left: parent.left
                 corner: RoundCorner.CornerEnum.BottomRight
                 implicitSize: extraSpace
-                color: Theme.background
+                color: Theme.surface
             }
              
             Rectangle {
@@ -56,7 +56,7 @@ Scope {
                     bottom: parent.bottom
                 }
                 implicitWidth: Theme.widgetwidth + Theme.widgetmargin*2
-                color: Theme.background
+                color: Theme.surface
                 radius: Theme.barradius
                 visible: true
 

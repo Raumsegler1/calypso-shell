@@ -155,3 +155,4 @@ seek(offset) offsets position by offset useful for e.g. skipping 5s
 togglePlaying() toggles State
 next()
 previous()
+

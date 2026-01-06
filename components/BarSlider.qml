@@ -24,10 +24,10 @@ ClippingRectangle {
     }
 
     property alias sliderfgcol: slider.color     // the value itself
-    property color sliderfgval: Theme.foreground // the color with effects applied
+    property color sliderfgval: Theme.primary // the color with effects applied
 
     property alias sliderbgcol: root.color       // the value itself
-    property color sliderbgval: Theme.foreground // the color with effects applied
+    property color sliderbgval: Theme.primary // the color with effects applied
 
     readonly property alias onSlider: mouse.hovered
 

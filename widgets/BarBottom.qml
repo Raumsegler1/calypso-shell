@@ -37,7 +37,7 @@ Scope {
                 anchors.left: parent.left
                 corner: RoundCorner.CornerEnum.BottomLeft
                 implicitSize: extraSpace
-                color: Theme.background
+                color: Theme.surface
             }
 
             RoundCorner {
@@ -45,7 +45,7 @@ Scope {
                 anchors.right: parent.right
                 corner: RoundCorner.CornerEnum.BottomRight
                 implicitSize: extraSpace
-                color: Theme.background
+                color: Theme.surface
             }
              
             Rectangle {
@@ -56,7 +56,7 @@ Scope {
                     bottom: parent.bottom
                 }
                 implicitHeight: Theme.widgetwidth + Theme.widgetmargin*2
-                color: Theme.background
+                color: Theme.surface
                 radius: Theme.barradius
                 visible: true
 
@@ -84,7 +84,7 @@ Scope {
                         bar: barShape
                     } 
 
-                    WorkspacesHorizontal { 
+                    WorkspacesVertical { 
                         id: workspaces
                     } // Workspaces with decoraction // Workspaces2 without
                     

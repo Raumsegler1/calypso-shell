@@ -37,7 +37,7 @@ Scope {
                 anchors.right: parent.right
                 corner: RoundCorner.CornerEnum.TopLeft
                 implicitSize: extraSpace
-                color: Theme.background
+                color: Theme.surface
             }
 
             RoundCorner {
@@ -45,7 +45,7 @@ Scope {
                 anchors.right: parent.right
                 corner: RoundCorner.CornerEnum.BottomLeft
                 implicitSize: extraSpace
-                color: Theme.background
+                color: Theme.surface
             }
              
             Rectangle {

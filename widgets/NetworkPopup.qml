@@ -9,15 +9,17 @@ import qs.services
 SidebarPopup {
     id: popup
     property real padding: 20
-    baseWidth: 165 + padding
+    baseWidth: background.width + padding
     baseHeight: background.height + padding
+
+    inverseCornerBottom: Theme.isVertical ? Theme.smallradius : 0
 
     property color textCol: Theme.primary
 
     Rectangle {
         id: background
         anchors.centerIn: parent
-        width: layout.width
+        width: layout.width -padding
         height: layout.height + padding
         radius: Theme.bigradius
         color: Theme.surface_container
@@ -33,14 +35,14 @@ SidebarPopup {
                 font.pixelSize: Theme.fontsize2
                 font.bold: Theme.bold
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: popup.width - 20
+                width: 155
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignHCenter
             }
 
             // Separator
             Rectangle {
-                width: parent.width * 0.92
+                width: background.width * 0.92
                 radius: width/2
                 height: 1
                 color: Theme.outline_variant

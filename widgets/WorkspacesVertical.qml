@@ -44,10 +44,15 @@ ClippingRectangle {
     ListView {
         id: list
         anchors.centerIn: parent
-        width: root.itemSize
-        
-        // Dynamic Height: Content height, but capped at 6 items max
-        height: Math.min((6 * root.itemSize) + (4 * root.spacing),contentHeight)
+        width: Theme.isVertical 
+            ? root.itemSize 
+            : (Math.min((6 * root.itemSize) + (4 * root.spacing),contentWidth))
+        height: Theme.isVertical 
+            ? (Math.min((6 * root.itemSize) + (4 * root.spacing),contentHeight)) 
+            : root.itemSize
+
+        // 1. IMPORTANT: Set orientation so the list actually lays out horizontally when needed
+        orientation: Theme.isVertical ? ListView.Vertical : ListView.Horizontal
 
         clip: true 
         spacing: 3
@@ -78,8 +83,8 @@ ClippingRectangle {
         // --- THE DELEGATE (The Workspace Item) ---
         delegate: Rectangle {
             z: 1
-            width: root.itemSize
-            height: Math.max(root.itemSize, contentCol.height + 10)
+            width: Theme.isVertical ? root.itemSize : Math.max(root.itemSize, container.width + 10)
+            height: Theme.isVertical ? Math.max(root.itemSize, container.height + 10) : root.itemSize
             
             readonly property string displayLabel: modelData.id < 0 ? "" : modelData.id
             readonly property bool isSpecial: modelData.id < 0
@@ -93,39 +98,91 @@ ClippingRectangle {
 
             radius: Theme.smallradius
 
-            Column {
-                id: contentCol
+            Item {
+                id: container
                 anchors.centerIn: parent
-                spacing: -5
-                Text {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    font.pixelSize: Theme.fontsize1
-                    text: modelData.id < 0 ? "" : modelData.id
-                    color: {
-                        if (mouse.hovered && !isSpecial && !isActive) return Theme.on_tertiary
-                        if (isSpecial || isActive) return Theme.on_primary
-                        return Theme.secondary
-                    }
-                    font.bold: Theme.bold
+                // Size the container to fit the loaded content
+                implicitWidth: loader.item.implicitWidth
+                implicitHeight: loader.item.implicitHeight
+
+                Loader {
+                    id: loader
+                    anchors.centerIn: parent
+                    sourceComponent: Theme.isVertical ? verticalLayout : horizontalLayout
                 }
 
-                Column {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: -5
-                    Repeater {
-                        model: modelData.toplevels.values
+                // --- OPTION 1: Vertical Layout (Column) ---
+                Component {
+                    id: verticalLayout
+                    Column {
+                        spacing: -5
+                        
+                        // Workspace ID
                         Text {
                             anchors.horizontalCenter: parent.horizontalCenter
-                            font.pixelSize: Theme.fontsize2
-                            text: matchIcon(modelData.wayland?.appId)
-                            color: {
-                                if (mouse.hovered && !isSpecial && !isActive) return Theme.on_tertiary
-                                if (isSpecial || isActive) return Theme.on_primary
-                                return Theme.secondary
-                            }
+                            font.pixelSize: Theme.fontsize1
                             font.bold: Theme.bold
-                        }   
+                            text: modelData.id < 0 ? "" : modelData.id
+                            color: container.getColor(mouse.hovered, isSpecial, isActive)
+                        }
+
+                        // Windows List
+                        Column {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            spacing: -5
+                            Repeater {
+                                model: modelData.toplevels.values
+                                Text {
+                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    font.pixelSize: Theme.fontsize2
+                                    font.bold: Theme.bold
+                                    text: matchIcon(modelData.wayland?.appId)
+                                    color: container.getColor(mouse.hovered, isSpecial, isActive)
+                                }   
+                            }
+                        }
                     }
+                }
+
+                // --- OPTION 2: Horizontal Layout (Row) ---
+                Component {
+                    id: horizontalLayout
+                    Row {
+                        spacing: 5 // Positive spacing looks better in rows usually
+                        
+                        // Workspace ID
+                        Text {
+                            anchors.verticalCenter: parent.verticalCenter
+                            font.pixelSize: Theme.fontsize1
+                            font.bold: Theme.bold
+                            text: modelData.id < 0 ? "" : modelData.id
+                            color: container.getColor(mouse.hovered, isSpecial, isActive)
+                        }
+
+                        // Windows List
+                        Row {
+                            anchors.verticalCenter: parent.verticalCenter
+                            spacing: 2
+                            Repeater {
+                                model: modelData.toplevels.values
+                                Text {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    font.pixelSize: Theme.fontsize2
+                                    font.bold: Theme.bold
+                                    text: matchIcon(modelData.wayland?.appId)
+                                    color: container.getColor(mouse.hovered, isSpecial, isActive)
+                                }   
+                            }
+                        }
+                    }
+                }
+
+                // --- HELPER FUNCTION ---
+                // Since logic is identical for both, we define it once here to keep code clean.
+                function getColor(isHovered, isSpecial, isActive) {
+                    if (isHovered && !isSpecial && !isActive) return Theme.on_tertiary
+                    if (isSpecial || isActive) return Theme.on_primary
+                    return Theme.primary
                 }
             }
             
@@ -194,7 +251,7 @@ ClippingRectangle {
         }
 
         // Return the icon if found, otherwise return a default 'unknown' icon
-        return iconMap[id] || ""//""
+        return iconMap[id] || ""
     }
 }
 

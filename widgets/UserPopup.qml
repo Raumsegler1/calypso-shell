@@ -16,9 +16,9 @@ SidebarPopup {
     anchor.margins.bottom: + Theme.widgetwidth + Theme.widgetmargin*2 - popup.height
     inverseCornerTop: 0
 
-    property color hoveredButton: Theme.background
-    property color surfaceButton: Qt.darker(Theme.foreground, 4)
-    property color onButton: Theme.foreground 
+    property color hoveredButton: Theme.tertiary
+    property color surfaceButton: Theme.secondary
+    property color onButton: Theme.primary 
     // ""
     // ""
     
