@@ -1,8 +1,8 @@
 {
     "colors": "matugen",
     "layout": "squircle",
-    "floating": true,
+    "floating": false,
     "floatValue": 10,
-    "barposition": "top",
+    "barposition": "bottom",
     "userIcon": ""
 }

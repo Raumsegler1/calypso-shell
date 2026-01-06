@@ -5,7 +5,7 @@ QtObject {
     property int   smallradius  :   4
     property int   bigradius    :   8
     property int   barradius    :   8
-    property int   widgetmargin :   5
+    property int   widgetmargin :   8
     property int   widgetwidth  :   30
     property bool  screenCorner :   true
     property int   cornerRadius :   10
