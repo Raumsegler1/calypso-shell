@@ -1,0 +1,81 @@
+import QtQuick
+import "../config"
+
+Item {
+    id: root
+
+    // --- PROPS ---
+    property real value: 0.5 
+    signal moved(real newValue)
+
+    implicitWidth: Theme.widgetwidth
+    implicitHeight: mouse.hovered ? Theme.widgetwidth * 5 : Theme.widgetwidth
+    Behavior on implicitHeight { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
+
+    property real fillPercent: mouse.hovered ? Math.min(root.value, 1.0) : 1.0
+    Behavior on fillPercent { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
+
+    property alias sliderfgcol: slider.color
+    property color sliderfgval: Theme.foreground
+    property alias sliderbgcol: background.color
+    property color sliderbgval: Theme.foreground
+    property real  sliderbgopacity: 1
+    readonly property alias onSlider: mouse.hovered
+
+
+    // 1. BACKGROUND (The Track)
+    Rectangle {
+        id: background
+        anchors.fill: parent
+        color: Qt.darker(root.sliderbgval, 3)
+        radius: Theme.smallradius
+        opacity: root.sliderbgopacity
+    }
+
+    // 2. THE CLIPPER (The "Window")
+    // This Item changes height, effectively cropping the content inside.
+    Item {
+        id: clipper
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        
+        // This height determines how much we see
+        height: parent.height * root.fillPercent
+        
+        // CRITICAL: Cut off anything outside this box
+        clip: true
+
+        // 3. THE FILL (The Content)
+        // This is ALWAYS full height, so the corners never distort.
+        Rectangle {
+            id: slider
+            
+            // Anchor to the bottom of the CLIPPER
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            
+            // Force it to match the BACKGROUND height (Full Size)
+            height: root.height 
+            
+            color: root.sliderfgval
+            radius: Theme.smallradius
+        }
+    }
+
+    // --- MOUSE AREA ---
+    MouseArea {
+        anchors.fill: parent
+        function calculateLevel(mouseY) {
+            var rawPercent = 1.0 - (mouseY / root.height)
+            if (rawPercent < 0) rawPercent = 0
+            if (rawPercent > 1) rawPercent = 1
+            root.moved(rawPercent)
+        }
+        onPressed: (mouse) => calculateLevel(mouse.y)
+        onPositionChanged: (mouse) => calculateLevel(mouse.y)
+    }
+    
+    HoverHandler { id: mouse; acceptedDevices: PointerDevice.AllDevices }
+}
