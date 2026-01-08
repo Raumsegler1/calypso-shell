@@ -68,6 +68,7 @@ QtObject {
     property bool  bold         :   currentTheme.bold
     property string barPosition :   config.adapter.barposition
     property string icon        :   config.adapter.userIcon
+    property string cityLocation:   config.adapter.city
     
     property bool isVertical: {
         if (config.adapter.barposition === "top" || config.adapter.barposition === "bottom") return false
@@ -92,6 +93,7 @@ QtObject {
             property real floatValue: 0
             property string barposition: "left"
             property string userIcon: "" //
+            property string city: "Tokyo"
         }
     }
 

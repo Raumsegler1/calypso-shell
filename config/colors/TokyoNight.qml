@@ -2,19 +2,120 @@
 import QtQuick
 
 QtObject {
-    property color background   :   "#222436"
-    property color on_background:   "#82aaff"
+    // ---------------------------------------------------------------------------
+    // SURFACE PALETTE
+    // ---------------------------------------------------------------------------
 
-    property color foreground   :   "#c8d3f5"
+    // The main background (Tokyo Night "Moon" variant).
+    property color surface                 :   "#222436" 
+    
+    // A slightly lighter surface for differentiation.
+    property color surface_bright          :   "#2f334d" 
+    
+    // The main text color.
+    property color on_surface              :   "#c8d3f5" 
+    
+    // Borders/Dividers (using the bright black/grey).
+    property color outline                 :   "#444a73" 
+    
+    // Softer borders (inactive tab bg).
+    property color outline_variant         :   "#2f334d" 
 
-    property color hover        :   "#86e1fc"
-    property color accent       :   "#c099ff"
-    property color accent2      :   "#c3e88d"
-    property color accent3      :   "#ffc777"
-    property color accent4      :   "#828bb8"
+    // ---------------------------------------------------------------------------
+    // SURFACE CONTAINERS
+    // ---------------------------------------------------------------------------
 
-    property color bordercol    :   "#82aaff"
-    property color error        :   "#ff757f"
+    // Darkest shade (Tokyo Night "Storm" / color0).
+    property color surface_container_lowest:   "#1b1d2b" 
+    
+    // Low emphasis.
+    property color surface_container_low   :   "#1e2030" 
+    
+    // Default container (matches main background).
+    property color surface_container       :   "#222436" 
+    
+    // High emphasis (Inactive element background).
+    property color surface_container_high  :   "#2f334d" 
+    
+    // Highest emphasis (Bright Black / Comment color).
+    property color surface_container_highest:  "#444a73" 
+
+    // ---------------------------------------------------------------------------
+    // PRIMARY PALETTE (Blue)
+    // ---------------------------------------------------------------------------
+
+    // The signature Tokyo Night Blue.
+    property color primary                 :   "#82aaff" 
+    
+    // Text on primary (Dark).
+    property color on_primary              :   "#1b1d2b" 
+    
+    // Variant (Cyan/Teal - color6).
+    property color primary_fixed           :   "#86e1fc" 
+    
+    // Content on primary_fixed.
+    property color on_primary_fixed        :   "#1b1d2b" 
+
+    // ---------------------------------------------------------------------------
+    // SECONDARY PALETTE (Purple)
+    // ---------------------------------------------------------------------------
+
+    // The Purple accent (color5).
+    property color secondary               :   "#c099ff" 
+    
+    // Text on secondary.
+    property color on_secondary            :   "#1b1d2b" 
+    
+    // Secondary variant (Bright Purple).
+    property color secondary_fixed         :   "#caabff" 
+    
+    // Content on secondary_fixed.
+    property color on_secondary_fixed      :   "#1b1d2b" 
+
+    // ---------------------------------------------------------------------------
+    // TERTIARY PALETTE (Orange/Gold)
+    // ---------------------------------------------------------------------------
+
+    // The Orange/Yellow accent (color3).
+    property color tertiary                :   "#ffc777" 
+    
+    // Text on tertiary.
+    property color on_tertiary             :   "#1b1d2b" 
+    
+    // Tertiary variant (Bright Orange).
+    property color tertiary_fixed          :   "#ffd8ab" 
+    
+    // Content on tertiary_fixed.
+    property color on_tertiary_fixed       :   "#1b1d2b" 
+
+    // ---------------------------------------------------------------------------
+    // ERROR PALETTE (Red)
+    // ---------------------------------------------------------------------------
+
+    // The Red accent (color1).
+    property color error                   :   "#ff757f" 
+    
+    // Text on error.
+    property color on_error                :   "#1b1d2b" 
+    
+    // Error container (Extended red).
+    property color error_container         :   "#c53b53" 
+    
+    // Text on error container.
+    property color on_error_container      :   "#c8d3f5" 
+
+    // ---------------------------------------------------------------------------
+    // INVERSE PALETTE
+    // ---------------------------------------------------------------------------
+
+    // Opposite surface (Light Text color).
+    property color inverse_surface         :   "#c8d3f5" 
+    
+    // Text on inverse surface (Dark Background).
+    property color inverse_on_surface      :   "#222436" 
+    
+    // Action color on inverse (Green - color2 for contrast).
+    property color inverse_primary         :   "#c3e88d" 
 }
 /*
 background "#222436"

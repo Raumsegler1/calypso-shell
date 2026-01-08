@@ -51,7 +51,7 @@ Item {
     readonly property var trackAlbumArtist: player?.trackAlbumArtist || "Unknown Album"  
     readonly property var trackArtist: player?.trackArtist || "Unknown Artist"  
     readonly property var trackTitle: player?.trackTitle || "Unknown Title"  
-    readonly property var trackArtUrl: player?.trackArtUrl || ""  
+    readonly property var trackArtUrl: player?.trackArtUrl || "https://placehold.co/512x512?text=No+Art"  
       
     readonly property var maxRate: player?.maxRate || 1.0  
     readonly property var minRate: player?.minRate || 1.0  

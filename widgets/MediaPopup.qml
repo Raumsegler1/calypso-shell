@@ -174,7 +174,7 @@ SidebarPopup {
                             thickness: 8
                             
                             // Calculate precise width to fit between timestamps
-                            length: parent.width - (playTime.contentWidth + playTimeLeft.contentWidth) - 10
+                            length: parent.width - Math.max(playTime.contentWidth, playTimeLeft.contentWidth)*2 - 10
                             
                             // M3: Active part is Primary, Inactive part is Secondary/Outline
                             sliderfgcol: progressBar.textCol

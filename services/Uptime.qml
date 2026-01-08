@@ -6,12 +6,13 @@ import Quickshell.Io
 
 Item {
     id: root
+    property int total: 0
     property string days: "0"    
     property string hours: "0"
     property string minutes: "00"
     
     // Optional: A combined formatted string
-    property string prettyTime: (days > 0 ? days + "d " : "") + hours + "h " + minutes + "m"
+    property string prettyTime: (days > 0 ? days + "d " : "") + (hours > 0 ? hours + "d " : "") + minutes + " min"
 
     Process {
         id: statusProc
@@ -29,10 +30,11 @@ Item {
                 const m = Math.floor((totalSeconds % (60*60)) / 60)
 
                 // Update properties
+                root.total = totalSeconds
                 root.days = d.toString()
                 root.hours = h.toString()
                 // Pad minutes with a leading zero if needed (e.g., "05")
-                root.minutes = m.toString().padStart(2, '0')
+                root.minutes = root.hours > 0 ? m.toString().padStart(2, '0') : m.toString()
             }
         }
     }

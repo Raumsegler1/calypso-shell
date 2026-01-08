@@ -50,13 +50,17 @@ Rectangle {
         anchors.centerIn: parent
         font.pixelSize: Theme.fontsize1
         font.bold: Theme.bold
-        color: Theme.on_primary
+        color: {
+            if (popup.pinned) return Theme.on_tertiary // Highlight when pinned
+            return Theme.on_primary
+        }
         text: Theme.icon 
     }
 
     // --- THE MAGIC COMPONENT ---
     PopupHandler {
         id: popup
+        pinnable: true
         
         // 1. Where is the popup file?
         // use Qt.resolvedUrl to ensure it finds the file relative to this one

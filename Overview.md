@@ -21,6 +21,9 @@ services/: "backend" logic; scripts
 
 assets/: images, fonts, svgs
 
+BUGS:
+- switching to a workspace that is not directly next to an open one makkes he highlighter vanish and doesnt scroll the list
+
 FEATURES:
 - Powerwidget with PopupSettings
 - Workspacewidget with icons for Apps and scrollable
@@ -31,14 +34,11 @@ FEATURES:
 - Cpu & Ram usage Widgets no popups
 - Network widget with network strength and popup for down- and uploadspeed
 - Batterywidget showing how full it is with icons and number adapts to low battery and if charging. missing popup for time until full/empty estimates and battery health
-- Theme system for Layout and Color missing User Menu
+- Theme system for Layout and Color missing User Menu & propery Material you theming
 
 TODO:
 - Usersettings Menu
 - UserCenter Popup
-    - Uptime
-    - UserIcon
-    - Weather
     - SettingsIcon
     - DiskUsage GpuUsage CpuUsage RamUsage
     - Time until Empty/Full
@@ -56,21 +56,16 @@ TODO:
     - showing Graph of speed
 - Bluetoothwidget to see connection status with Popup
     - connected device
-- Making The bar rotation agnostic
-- disconnecting floating from layout and have it be a seperate option with slider for value
 - different values for horizontal and vertical bar margins
 - volume Mixer
 
 Required:
 - better service for battery to also estimate time untill full and battery health
 - better service for media to get all players and adjust all their values
-- change how thing are laid out based on a Vertical setting in Theme
-- pull floating values out of layout and into user_setting
 - improve network service to querry max network speed and save it
 - improve network service so it allows for displaying and choosing all networks with password input
 - a service for calendar and special days
-- a service for weather
-- a service for location
+- a better service for weather
 - a service for GpuUsage
 - a service for DiskUsage
 - a service for bluetooth managment
