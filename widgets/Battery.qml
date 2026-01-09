@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Services.UPower // <--- The magic import
-import "../config"
+import qs.config
 
 Rectangle {
     id: root

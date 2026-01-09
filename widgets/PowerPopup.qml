@@ -56,7 +56,7 @@ SidebarPopup {
                 Layout.fillHeight: true
                 Layout.minimumHeight: 70
                 Layout.minimumWidth: 70
-                radius: Theme.bigradius
+                radius: Math.min(Theme.bigradius, 16)
                 color: mouse.hovered ? Theme.tertiary : Theme.primary
                 
                 // Put the column inside the rectangle background
