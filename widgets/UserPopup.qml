@@ -156,7 +156,7 @@ SidebarPopup {
                 // Bar is on Left -> Popup on Right
                 PropertyChanges { 
                     target: popup
-                    inverseCornerBottom: 0
+                    inverseCornerTop: 0
                     anchor.gravity: Edges.Right | Edges.Top
                     edgeAdjust1: - popup.height + Theme.widgetwidth + Theme.widgetmargin*2
                 }
@@ -166,7 +166,7 @@ SidebarPopup {
                 // Bar is on Right -> Popup on Left
                 PropertyChanges { 
                     target: popup
-                    inverseCornerBottom: 0
+                    inverseCornerTop: 0
                     //anchor.gravity: Edges.Left | Edges.Top
                     edgeAdjust1: - popup.height + Theme.widgetwidth + Theme.widgetmargin*2
                 }

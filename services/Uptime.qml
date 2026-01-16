@@ -12,7 +12,7 @@ Item {
     property string minutes: "00"
     
     // Optional: A combined formatted string
-    property string prettyTime: (days > 0 ? days + "d " : "") + (hours > 0 ? hours + "d " : "") + minutes + " min"
+    property string prettyTime: (days > 0 ? days + "d " : "") + (hours > 0 ? hours + "h " : "") + minutes + " min"
 
     Process {
         id: statusProc
