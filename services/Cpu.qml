@@ -6,36 +6,35 @@ import Quickshell.Io
 
 Item {
     property var cpuTemp: []
-    property var cpuTotal: 0 
+    property var cpuTotal: 0
     property var cpuIdle: 0
     readonly property var cpuTotalBusy: cpuTotal - cpuIdle
-    readonly property var cpuPercentage: Math.round((cpuTotalBusy/cpuTotal) * 100)
+    readonly property var cpuPercentage: Math.round((cpuTotalBusy / cpuTotal) * 100)
 
     Process {
         id: statusProc
         command: ["sh", "-c", "head -1 /proc/stat"]
         stdout: SplitParser {
             onRead: data => {
-                var currentTotal = 0
-                var currentIdle = 0
-                var cpuNow = data.trim().split(/\s+/)
+                var currentTotal = 0;
+                var currentIdle = 0;
+                var cpuNow = data.trim().split(/\s+/);
                 for (var i = 1; i < (cpuNow.length - 2); i++) {
+                    var valOld = parseInt(cpuTemp[i]);
+                    var valNow = parseInt(cpuNow[i]);
 
-                    var valOld = parseInt(cpuTemp[i])
-                    var valNow = parseInt(cpuNow[i])
+                    var diff = valNow - valOld;
 
-                    var diff =   valNow - valOld
-
-                    currentTotal += diff
+                    currentTotal += diff;
 
                     if (i === 4) {
-                        currentIdle = diff
+                        currentIdle = diff;
                     }
                 }
-                cpuTotal = currentTotal
-                cpuIdle = currentIdle
+                cpuTotal = currentTotal;
+                cpuIdle = currentIdle;
 
-                cpuTemp = cpuNow
+                cpuTemp = cpuNow;
             }
         }
     }
@@ -45,6 +44,7 @@ Item {
         running: true
         repeat: true
         onTriggered: statusProc.running = true
+        triggeredOnStart: true
     }
 }
 

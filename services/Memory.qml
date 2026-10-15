@@ -7,8 +7,8 @@ import Quickshell.Io
 Item {
     property int maxRam: 0
     property int usedRam: 0
-    readonly property real maxRamGb: (maxRam / 1000000).toFixed(1)
-    readonly property real usedRamGb: (usedRam / 1000000).toFixed(1)
+    readonly property real maxRamGb: (maxRam / 1048576).toFixed(1)
+    readonly property real usedRamGb: (usedRam / 1048576).toFixed(1)
     readonly property real usedRamRelative: (usedRam / maxRam).toFixed(2)
     readonly property real usedRamPercentage: Math.round((usedRam / maxRam) * 100)
 
@@ -18,10 +18,9 @@ Item {
 
         stdout: SplitParser {
             onRead: data => {
-                var parts = data.trim().split(/\s+/)
-                maxRam = parts[1]
-                usedRam = parts[2]
-
+                var parts = data.trim().split(/\s+/);
+                maxRam = parts[1];
+                usedRam = parts[2];
             }
         }
     }
@@ -31,6 +30,7 @@ Item {
         running: true
         repeat: true
         onTriggered: statusProc.running = true
+        triggeredOnStart: true
     }
 }
 

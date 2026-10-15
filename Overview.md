@@ -22,9 +22,13 @@ services/: "backend" logic; scripts
 assets/: images, fonts, svgs
 
 BUGS:
-- switching to a workspace that is not directly next to an open one makkes he highlighter vanish and doesnt scroll the list
+
+- Shutdown option on PowerPopup has an incorrect margin between icon and text
+- (Workspace view does not switch to scratchpad, and active workspace also stays highlighted)
+- Cloud icon on Weather in UserPopup displays incorrectly to the right side
 
 FEATURES:
+
 - Powerwidget with PopupSettings
 - Workspacewidget with icons for Apps and scrollable
 - Mediawidget with Popup for bigger Cover and media controls
@@ -37,29 +41,31 @@ FEATURES:
 - Theme system for Layout and Color missing User Menu & propery Material you theming
 
 TODO:
+
 - Usersettings Menu
 - UserCenter Popup
-    - SettingsIcon
-    - DiskUsage GpuUsage CpuUsage RamUsage
-    - Time until Empty/Full
-    - Date & Location
-    - Bluetooth and Network manager to search for and connect to devices
+  - SettingsIcon
+  - DiskUsage GpuUsage
+  - Time until Empty/Full
+  - dynamic Location
+  - Bluetooth and Network manager to search for and connect to devices
 - Calendar Popup showing Date and Calendar with Special Days
 - Media Popup
-    - Lyrics
-    - Visualizer
+  - Lyrics
+  - Visualizer
 - Battery Popup
-    - Time until Empty/Full
-    - Battery health
+  - Time until Empty/Full
+  - Battery health
 - more Network Stats
-    - polling max UP/DOWNloadspeed every 30-60min and saving
-    - showing Graph of speed
+  - polling max UP/DOWNloadspeed every 30-60min and saving
+  - showing Graph of speed
 - Bluetoothwidget to see connection status with Popup
-    - connected device
+  - connected device
 - different values for horizontal and vertical bar margins
 - volume Mixer
 
 Required:
+
 - better service for battery to also estimate time untill full and battery health
 - better service for media to get all players and adjust all their values
 - improve network service to querry max network speed and save it
@@ -70,3 +76,6 @@ Required:
 - a service for DiskUsage
 - a service for bluetooth managment
 
+NOTES:
+
+- Bar.qml is split into 4 files as dynamically changing between anchors does not work properly with my quickshell version, newer ones may work
