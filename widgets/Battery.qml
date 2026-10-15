@@ -8,7 +8,7 @@ Rectangle {
     implicitWidth: Theme.widgetwidth
     implicitHeight: Theme.widgetwidth
     color: {
-        if (root.percent <= 20) return Theme.error
+        if (root.percent <= 20) return Theme.error_container
         if (root.isCharging) return Theme.tertiary
         return Theme.primary
     }
@@ -66,7 +66,7 @@ Rectangle {
             }
         }
         color: {
-            if (root.percent <= 20) return Theme.on_error
+            if (root.percent <= 20) return Theme.on_error_container
             if (root.isCharging) return Theme.on_tertiary
             return Theme.on_primary
         }

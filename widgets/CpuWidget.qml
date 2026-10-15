@@ -14,7 +14,8 @@ Rectangle {
     radius: Theme.smallradius
     
     color: {
-        if (Cpu.cpuPercentage > 90) return Theme.tertiary // Highlight when pinned
+        if (Cpu.cpuPercentage > 99) return Theme.error_container // Highlight when high
+        if (Cpu.cpuPercentage > 90) return Theme.error_container // Highlight when high
         if (Cpu.cpuPercentage) return Theme.primary
         return Theme.error
     }
@@ -24,12 +25,14 @@ Rectangle {
         font.pixelSize: Theme.fontsize2
         font.bold: Theme.bold
         color: {
-            if (Cpu.cpuPercentage > 90) return Theme.on_tertiary // Highlight when pinned
+            if (Cpu.cpuPercentage > 99) return Theme.on_error_container // Highlight when high
+            if (Cpu.cpuPercentage > 90) return Theme.on_error_container // Highlight when high
             if (Cpu.cpuPercentage) return Theme.on_primary
             return Theme.on_error
         }
         text: {
             var s = Cpu.cpuPercentage
+            if (Cpu.cpuPercentage > 99) return ""
             if (s) return s + " "
             return ""
         }
