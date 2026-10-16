@@ -22,7 +22,7 @@ stdenvNoCC.mkDerivation {
     runHook preInstall
 
     mkdir -p $out/share/calypso-shell
-    cp -r shell.qml components config services widgets $out/share/calypso-shell/
+    cp -r shell.qml components config services widgets media $out/share/calypso-shell/
 
     makeWrapper ${lib.getExe quickshell} $out/bin/calypso-shell \
       --add-flags "-p $out/share/calypso-shell" \
