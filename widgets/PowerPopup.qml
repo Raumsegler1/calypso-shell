@@ -46,27 +46,27 @@ SidebarPopup {
             // --- THE BUTTONS ---
 
             PowerBtn {
-                icon: ""
+                icon: "\uf023"              //
                 label: "Lock"
             }
             PowerBtn {
-                icon: "󰤄"
+                icon: "\uDB82\uDD04"        //󰤄
                 label: "Sleep"
             }
             PowerBtn {
-                icon: "󰍃"
+                icon: "\uDB80\uDF43"        //󰍃
                 label: "Logout"
             }
             PowerBtn {
-                icon: "⏻"
+                icon: "\uf011"              //
                 label: "Shutdown"
             }
             PowerBtn {
-                icon: ""
+                icon: "\uf0e2"              //
                 label: "Restart"
             }
             PowerBtn {
-                icon: "󰤁"
+                icon: "\uDB82\uDD01"        //󰤁
                 label: "Hibernate"
             }
         }
