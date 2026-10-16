@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell     
+import Quickshell
 import Quickshell.Io
 import Quickshell.Widgets
 import qs.config
@@ -14,12 +14,12 @@ SidebarPopup {
     baseHeight: background.height + padding
     //baseWidth: (child.width) + padding
     //baseHeight: (child.height) + padding
-    anchor.margins.bottom: + Theme.widgetwidth + Theme.widgetmargin*2 - popup.height
+    anchor.margins.bottom: +Theme.widgetwidth + Theme.widgetmargin * 2 - popup.height
     inverseCornerTop: 0
 
     property color hoveredButton: Theme.tertiary
     property color surfaceButton: Theme.secondary
-    property color onButton: Theme.primary 
+    property color onButton: Theme.primary
     // ""
     // ""
 
@@ -34,19 +34,19 @@ SidebarPopup {
         Column {
             id: content
             anchors.centerIn: parent
-            spacing: popup.padding/2
+            spacing: popup.padding / 2
 
             Rectangle {
                 id: uptimeUser
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: background.width - popup.padding
-                height: (uptimeUser.width)/3
-                radius: (Theme.bigradius > 20) ? uptimeUser.height/2 : Theme.bigradius
+                height: (uptimeUser.width) / 3
+                radius: (Theme.bigradius > 20) ? uptimeUser.height / 2 : Theme.bigradius
                 color: Theme.surface_container_highest
 
                 Row {
                     anchors.fill: parent
-                    anchors.margins: popup.padding/2
+                    anchors.margins: popup.padding / 2
                     spacing: 20
 
                     ClippingRectangle {
@@ -54,7 +54,7 @@ SidebarPopup {
                         anchors.verticalCenter: parent.verticalCenter
                         width: uptimeUser.height - popup.padding
                         height: uptimeUser.height - popup.padding
-                        radius: (Theme.bigradius > 20) ? imgClip.height/2 : Theme.smallradius
+                        radius: (Theme.bigradius > 20) ? imgClip.height / 2 : Theme.smallradius
                         border.width: 2
                         border.color: Theme.primary
                         Image {
@@ -63,7 +63,9 @@ SidebarPopup {
                             fillMode: Image.PreserveAspectCrop
                             width: parent.width
                             height: parent.height
-                            source: "file:///home/raumsegler/.face"
+                            source: Theme.faceUrl
+                            cache: false
+                            asynchronous: true
                         }
                     }
 
@@ -72,8 +74,8 @@ SidebarPopup {
                         Text {
                             color: Theme.primary
                             font.bold: Theme.bold
-                            font.pixelSize: Theme.fontsize1+2
-                            text: "raumsegler"
+                            font.pixelSize: Theme.fontsize1 + 2
+                            text: Theme.userName
                         }
 
                         Text {
@@ -85,7 +87,7 @@ SidebarPopup {
                     }
                 }
             }
-            
+
             Rectangle {
                 id: weather
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -107,7 +109,7 @@ SidebarPopup {
                         anchors.verticalCenter: parent.verticalCenter
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        width: Theme.fontsize1*3
+                        width: Theme.fontsize1 * 3
                         color: Theme.primary
                         font.family: "Material Icons Round"
                         font.pixelSize: Theme.fontsize1 * 4
@@ -118,77 +120,78 @@ SidebarPopup {
                     Column {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: 2
-                        
+
                         Text {
                             color: Theme.primary
                             font.bold: Theme.bold
                             font.pixelSize: Theme.fontsize1
                             text: Theme.cityLocation
                         }
-                        
-                        // Optional: Add the condition text below the city (e.g. "Clear Sky")
+
                         Text {
                             color: Theme.tertiary
                             font.bold: Theme.bold
                             font.pixelSize: Theme.fontsize2
-                            text: "It's " + Weather.temperature + " and " + Weather.weatherString  // You can add Weather.conditionText later
+                            text: "It's " + Weather.temperature + " and " + Weather.weatherString
                         }
                     }
                 }
             }
         }
     }
-    
 
     Item {
         id: positionHandler
         // --- STATES (Moved INSIDE Item so they work) ---
         state: {
-            if (Theme.barPosition === "right") return "RIGHT"
-            if (Theme.barPosition === "top") return "TOP"
-            if (Theme.barPosition === "bottom") return "BOTTOM"
-            return "LEFT"
+            if (Theme.barPosition === "right")
+                return "RIGHT";
+            if (Theme.barPosition === "top")
+                return "TOP";
+            if (Theme.barPosition === "bottom")
+                return "BOTTOM";
+            return "LEFT";
         }
 
         states: [
             State {
                 name: "LEFT"
                 // Bar is on Left -> Popup on Right
-                PropertyChanges { 
+                PropertyChanges {
                     target: popup
                     inverseCornerTop: 0
                     anchor.gravity: Edges.Right | Edges.Top
-                    edgeAdjust1: - popup.height + Theme.widgetwidth + Theme.widgetmargin*2
+                    edgeAdjust1: -popup.height + Theme.widgetwidth + Theme.widgetmargin * 2
                 }
             },
             State {
                 name: "RIGHT"
                 // Bar is on Right -> Popup on Left
-                PropertyChanges { 
+                PropertyChanges {
                     target: popup
                     inverseCornerTop: 0
                     //anchor.gravity: Edges.Left | Edges.Top
-                    edgeAdjust1: - popup.height + Theme.widgetwidth + Theme.widgetmargin*2
+                    edgeAdjust1: -popup.height + Theme.widgetwidth + Theme.widgetmargin * 2
                 }
             },
             State {
                 name: "TOP"
                 // Bar is Top -> Popup on Bottom
-                PropertyChanges { 
+                PropertyChanges {
                     target: popup
                     //inverseCornerBottom: 0
                     anchor.gravity: Edges.Right | Edges.Top
-                    edgeAdjust1: - popup.width + Theme.widgetwidth + Theme.widgetmargin*2
+                    edgeAdjust1: -popup.width + Theme.widgetwidth + Theme.widgetmargin * 2
                 }
             },
             State {
                 name: "BOTTOM"
                 // Bar is Bottom -> Popup on Top
-                PropertyChanges { 
+                PropertyChanges {
                     target: popup
                     //inverseCornerBottom: 0
                     anchor.gravity: Edges.Right | Edges.Top
-                    edgeAdjust1: - popup.width + Theme.widgetwidth + Theme.widgetmargin*2
+                    edgeAdjust1: -popup.width + Theme.widgetwidth + Theme.widgetmargin * 2
                 }
             }
         ]
