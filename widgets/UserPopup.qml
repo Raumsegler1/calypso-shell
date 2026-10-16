@@ -9,17 +9,16 @@ import qs.services
 
 SidebarPopup {
     id: popup
-    property real padding: 20
+    property real padding: 15
     baseWidth: background.width + padding
     baseHeight: background.height + padding
-    //baseWidth: (child.width) + padding
-    //baseHeight: (child.height) + padding
     anchor.margins.bottom: +Theme.widgetwidth + Theme.widgetmargin * 2 - popup.height
     inverseCornerTop: 0
 
     property color hoveredButton: Theme.tertiary
     property color surfaceButton: Theme.secondary
     property color onButton: Theme.primary
+    property color containerColor: Theme.surface_container
     // ""
     // ""
 
@@ -28,13 +27,13 @@ SidebarPopup {
         anchors.centerIn: parent
         width: 300
         height: content.height + popup.padding
-        color: Theme.surface_container
+        color: Theme.surface
         radius: Theme.bigradius
 
         Column {
             id: content
             anchors.centerIn: parent
-            spacing: popup.padding / 2
+            spacing: popup.padding
 
             Rectangle {
                 id: uptimeUser
@@ -42,7 +41,7 @@ SidebarPopup {
                 width: background.width - popup.padding
                 height: (uptimeUser.width) / 3
                 radius: (Theme.bigradius > 20) ? uptimeUser.height / 2 : Theme.bigradius
-                color: Theme.surface_container_highest
+                color: popup.containerColor
 
                 Row {
                     anchors.fill: parent
@@ -95,7 +94,7 @@ SidebarPopup {
                 height: (uptimeUser.width) / 3
                 // Ensure radius is consistent
                 radius: (Theme.bigradius > 20) ? height / 2 : Theme.bigradius
-                color: Theme.surface_container_highest
+                color: popup.containerColor
 
                 Row {
                     //anchors.centerIn: parent
