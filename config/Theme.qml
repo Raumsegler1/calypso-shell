@@ -226,9 +226,7 @@ QtObject {
     // -------------------------------------------------------------------------
     readonly property string configDir: (Quickshell.env("XDG_CONFIG_HOME") || (Quickshell.env("HOME") + "/.config")) + "/calypso-shell/"
     readonly property string userName: Quickshell.env("USER")
-    // NOTE: configDir already ends in "/", so this produces "...//.face".
-    // Harmless on Linux, but could be tidied to  configDir + ".face".
-    readonly property string faceUrl: "file://" + configDir + "/.face"
+    readonly property string faceUrl: "file:/" + configDir + ".face"
 
     // -------------------------------------------------------------------------
     // USER THEME LOADING
