@@ -124,7 +124,8 @@ SidebarPopup {
                     if (label == "Restart")
                         exec("systemctl reboot");
                     if (label == "Logout")
-                        exec("hyprshutdown && hyprctl dispatch exit");
+                        //exec("hyprshutdown");
+                        exec("systemd-run --user --collect hyprshutdown --no-fork");
                     if (label == "Hibernate")
                         exec("systemctl hybrid-sleep");
                     //console.log("Clicked " + labelText.text)
